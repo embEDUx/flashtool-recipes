@@ -14,20 +14,24 @@ type: components_config
 
 recipe: 
     uboot:
-        module: 
-        #...
+        module: mmc
+        info: 
+            partition: 0
 
-    kernel: 
-        module:
-        #...
+    linux: 
+        module: mmc
+        info:
+            partition: 0
 
     rootfs:
-        module:
-        #...
+        module: mmc
+        info:
+            partition: 1
 
     misc:
-        module:
-        #...
+        module: mmc
+        info:
+            partition: 0
 
 # -------------------------------------------------------
 # The next documents define how to setup the platform.
@@ -38,3 +42,21 @@ recipe:
 # The stated modules in document above must be defined
 # here.
 
+---
+type: mmc
+
+recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point:
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: ext4
+            mount_point:
+            mount_opts:
+            flags: 
