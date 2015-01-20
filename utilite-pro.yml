@@ -1,0 +1,33 @@
+---
+type: mmc
+
+recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point: /boot
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: ext4
+            mount_point: /
+            mount_opts:
+            flags: 
+    load:
+        Uboot:
+            command: dd if=${file} of=${device} bs=1K skip=1 seek=1 oflag=dsync
+        Linux_Boot:
+            device: 0
+        Linux_Root:
+            device: 1
+        Linux_Config:
+            device: 1
+        Rootfs:
+            device: 1
+        #Misc_Boot:
+        #    device: 0
+        #Misc_Root:
+        #    device: 1
