@@ -1,48 +1,4 @@
 ---
-# This document configures where to setup each components.
-# It must be the first document in the configuration.
-# Following components must be defined:
-#    uboot, kernel, rootfs, misc
-#
-# All components must be stated. Unnecessary components
-# must be set with the value None:
-#    e.g. misc: None
-# 
-# 
-
-type: components_config
-
-recipe: 
-    uboot:
-        module: mmc
-        info: 
-            partition: 0
-
-    linux: 
-        module: mmc
-        info:
-            partition: 0
-
-    rootfs:
-        module: mmc
-        info:
-            partition: 1
-
-    misc:
-        module: mmc
-        info:
-            partition: 0
-
-# -------------------------------------------------------
-# The next documents define how to setup the platform.
-#
-# Important: The setup routin will follow the order
-# given in this configuration file. 
-#
-# The stated modules in document above must be defined
-# here.
-
----
 type: mmc
 
 recipe:
@@ -51,12 +7,27 @@ recipe:
         -   name: boot
             size: 100mb
             fs_type: fat32
-            mount_point:
+            mount_point: /boot
             mount_opts:
             flags: lba
         -   name: rootfs
             size: max
             fs_type: ext4
-            mount_point:
+            mount_point: /
             mount_opts:
             flags: 
+    load:
+        Uboot:
+            device: 0
+        Linux_Boot:
+            device: 0
+        Linux_Root:
+            device: 1
+        Linux_Config:
+            device: 1
+        Rootfs:
+            device: 1
+        #Misc_Boot:
+        #    device: 0
+        #Misc_Root:
+        #    device: 1

@@ -1,40 +1,53 @@
 ---
-# This document configures where to setup each components.
-# It must be the first document in the configuration.
-# Following components must be defined:
-#    uboot, kernel, rootfs, misc
-#
-# All components must be stated. Unnecessary components
-# must be set with the value None:
-#    e.g. misc: None
-# 
-# 
-
-type: components_config
+# General template
+type: # name with pytho represention
 
 recipe: 
-    uboot:
-        module: 
-        #...
+    load:
+        Uboot:
+            # device: or command:
+        Linux_Boot:
+            # device: or command:
+        Linux_Root:
+            # device: or command:
+        Linux_Config:
+            # device: or command:
+        Rootfs:
+            # device: or command:
+        Misc_Boot:
+            # device: or command:
+        Misc_Root:
+            # device: or command:
+    #... 
 
-    kernel: 
-        module:
-        #...
 
-    rootfs:
-        module:
-        #...
+---
+# MMC template
 
-    misc:
-        module:
-        #...
+type: mmc
 
-# -------------------------------------------------------
-# The next documents define how to setup the platform.
-#
-# Important: The setup routin will follow the order
-# given in this configuration file. 
-#
-# The stated modules in document above must be defined
-# here.
-
+recipe:
+    partition_table: #partition table type
+    partitions: # list with partition information
+        -   name: # label
+            size: # size of partition (allowed %/b/kb/mb/gb/)
+            fs_type: # filesystem type (e.g. fat32, ext4)
+            mount_point: # Mount point in System
+            mount_opts:  # Mount options
+            flags: # flags for partition
+        -   #...
+    load:
+        Uboot:
+            # device: or command:
+        Linux_Boot:
+            # device: or command:
+        Linux_Root:
+            # device: or command:
+        Linux_Config:
+            # device: or command:
+        Rootfs:
+            # device: or command:
+        Misc_Boot:
+            # device: or command:
+        Misc_Root:
+            # device: or command:
