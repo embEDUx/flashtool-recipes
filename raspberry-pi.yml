@@ -27,7 +27,7 @@ recipe:
             device: 1
         Rootfs:
             device: 1
-        #Misc_Boot:
-        #    device: 0
-        #Misc_Root:
-        #    device: 1
+        Misc_Boot:
+            device: 0
+        Misc_Root:
+            device: 1
