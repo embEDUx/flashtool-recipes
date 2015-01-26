@@ -12,7 +12,7 @@ recipe:
             flags: boot
         -   name: rootfs
             size: max
-            fs_type: ext4
+            fs_type: btrfs
             mount_point: /
             mount_opts:
             flags: 
@@ -29,5 +29,5 @@ recipe:
             device: 1
         Misc_Boot:
             device: 0
-        Misc_Root:
-            device: 1
+        #Misc_Root:
+        #    device: 1
