@@ -12,7 +12,7 @@ recipe:
             flags: lba
         -   name: rootfs
             size: max
-            fs_type: ext4
+            fs_type: btrfs
             mount_point: /
             mount_opts:
             flags: 

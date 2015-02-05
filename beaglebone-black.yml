@@ -9,10 +9,10 @@ recipe:
             fs_type: fat32
             mount_point: /boot
             mount_opts:
-            flags: lba
+            flags: boot
         -   name: rootfs
             size: max
-            fs_type: ext4
+            fs_type: btrfs
             mount_point: /
             mount_opts:
             flags: 
