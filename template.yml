@@ -12,7 +12,9 @@ recipe:
             # device: or command:
         Linux_Config:
             # device: or command:
-        Rootfs:
+        Rootfs_Rootfs:
+            # device: or command:
+        Rootfs_Portage:
             # device: or command:
         Misc_Boot:
             # device: or command:
@@ -45,7 +47,9 @@ recipe:
             # device: or command:
         Linux_Config:
             # device: or command:
-        Rootfs:
+        Rootfs_Rootfs:
+            # device: or command:
+        Rootfs_Portage:
             # device: or command:
         Misc_Boot:
             # device: or command:
